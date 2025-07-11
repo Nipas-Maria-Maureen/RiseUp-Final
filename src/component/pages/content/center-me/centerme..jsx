@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../../../../../../frontend/backend/config/firebase';
+import { db } from '../../../../../backend/config/firebase';
 
 export default function RecordedCenterMe() {
   const [centerMeURL, setCenterMeURL] = useState('');
@@ -16,7 +16,7 @@ export default function RecordedCenterMe() {
           day: '2-digit'
         });
 
-        const formattedDate = manilaFormatter.format(new Date()); // e.g. "2025-07-07"
+        const formattedDate = manilaFormatter.format(new Date());
         const docRef = doc(db, 'daily_schedules', formattedDate);
         const docSnap = await getDoc(docRef);
 
